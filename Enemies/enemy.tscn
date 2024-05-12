@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyhh2q2rwjxv8"]
+
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_8e8ge"]
+[ext_resource type="Texture2D" uid="uid://cpqktot470wnm" path="res://Art/Sprites/earthTurtles.png" id="2_0q4fs"]
+[ext_resource type="PackedScene" uid="uid://cjd10gcwv0yay" path="res://Utility/hurt_box.tscn" id="3_1hkhu"]
+[ext_resource type="PackedScene" uid="uid://crysg8tdrcrgs" path="res://Utility/hit_box.tscn" id="4_37gfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g274s"]
+size = Vector2(63.5, 49)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4xvk"]
+radius = 36.0555
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8j8p"]
+size = Vector2(66, 34.75)
+
+[node name="enemy_earthTurtle" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_8e8ge")
+movement_speed = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-58, -39)
+scale = Vector2(0.458647, 0.549256)
+texture = ExtResource("2_0q4fs")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.25, 9)
+shape = SubResource("RectangleShape2D_g274s")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_1hkhu")]
+light_mask = 4
+visibility_layer = 4
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-3, 5)
+shape = SubResource("CircleShape2D_n4xvk")
+
+[node name="HitBox" parent="." instance=ExtResource("4_37gfe")]
+light_mask = 2
+visibility_layer = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0" groups=["attack"]]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-11, 22.375)
+shape = SubResource("RectangleShape2D_l8j8p")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

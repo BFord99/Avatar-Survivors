@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://pcwvh0flo2qx"]
+
+[ext_resource type="Texture2D" uid="uid://hbhykqfftsyi" path="res://Art/Map Art/Sand_Tile_01.png" id="1_7w14v"]
+[ext_resource type="PackedScene" uid="uid://dcteqkc6x3hje" path="res://Player/player.tscn" id="2_yddm1"]
+[ext_resource type="PackedScene" uid="uid://d0hutw66muxcu" path="res://Utility/enemy_spawner.tscn" id="3_00sru"]
+[ext_resource type="PackedScene" uid="uid://cyhh2q2rwjxv8" path="res://Enemies/enemy.tscn" id="4_cdbti"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_05eqa"]
+
+[sub_resource type="Resource" id="Resource_ibtqf"]
+script = ExtResource("5_05eqa")
+time_start = 0
+time_end = 60
+enemy = ExtResource("4_cdbti")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(14, 12)
+texture = ExtResource("1_7w14v")
+region_enabled = true
+region_rect = Rect2(4000, 0, 4000, 4000)
+
+[node name="Player" parent="." instance=ExtResource("2_yddm1")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_00sru")]
+spawns = Array[ExtResource("5_05eqa")]([SubResource("Resource_ibtqf")])

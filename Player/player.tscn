@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcteqkc6x3hje"]
+
+[ext_resource type="Texture2D" uid="uid://ckmvf2yg5dgbd" path="res://Art/Sprites/aangfix.png" id="1_3phce"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_687op"]
+[ext_resource type="PackedScene" uid="uid://cjd10gcwv0yay" path="res://Utility/hurt_box.tscn" id="3_m36la"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rttbp"]
+radius = 24.0
+height = 86.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cq1a"]
+radius = 1122.2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68f5h"]
+radius = 25.0
+height = 96.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_687op")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3phce")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 9)
+shape = SubResource("CapsuleShape2D_rttbp")
+
+[node name="Attack" type="AudioListener2D" parent="."]
+
+[node name="RockShardTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="RockShardAttackTimer" type="Timer" parent="Attack/RockShardTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_3cq1a")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_m36la")]
+light_mask = 1
+visibility_layer = 1
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(2, 8)
+shape = SubResource("CapsuleShape2D_68f5h")
+
+[connection signal="timeout" from="Attack/RockShardTimer" to="." method="_on_rock_shard_timer_timeout"]
+[connection signal="timeout" from="Attack/RockShardTimer/RockShardAttackTimer" to="." method="_on_rock_shard_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]

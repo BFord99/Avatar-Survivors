@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw3yats6i4wb2"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_udman"]
+[ext_resource type="Texture2D" uid="uid://d077tqpb21gyg" path="res://Art/Wallpaper/MenuWallpaper.webp" id="2_apiia"]
+[ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Fonts/Avatar Airbender.ttf" id="3_6p4kh"]
+[ext_resource type="FontFile" uid="uid://cy3sky0dijm4v" path="res://Fonts/Herculanum Regular.ttf" id="3_qgauk"]
+[ext_resource type="AudioStream" uid="uid://cwpypryef0fd6" path="res://Audio/The Avatar's Love [Full HQ].mp3" id="5_s8e3p"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udman")
+
+[node name="Wallpaper_Texture" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 1.0
+offset_right = 1921.0
+offset_bottom = 1088.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_apiia")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title_VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 80
+
+[node name="Control" type="Control" parent="MarginContainer/Title_VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Title_VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("3_6p4kh")
+theme_override_font_sizes/font_size = 128
+text = "Avatar Survivors
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 480
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/Button_VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/Button_VBoxContainer"]
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qgauk")
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="Exit" type="Button" parent="MarginContainer/Button_VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qgauk")
+theme_override_font_sizes/font_size = 35
+text = "Exit"
+
+[node name="AvatarsLove_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s8e3p")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/Button_VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Button_VBoxContainer/Exit" to="." method="_on_exit_pressed"]
