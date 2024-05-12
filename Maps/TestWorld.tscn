@@ -11,7 +11,7 @@ script = ExtResource("5_05eqa")
 time_start = 0
 time_end = 60
 enemy = ExtResource("4_cdbti")
-enemy_num = 1
+enemy_num = 3
 enemy_spawn_delay = 1
 
 [node name="TestWorld" type="Node2D"]

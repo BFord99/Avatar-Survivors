@@ -8,8 +8,8 @@
 radius = 24.0
 height = 86.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3cq1a"]
-radius = 1122.2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88pcs"]
+size = Vector2(88.8512, 61.7021)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68f5h"]
 radius = 25.0
@@ -23,6 +23,7 @@ script = ExtResource("1_687op")
 texture = ExtResource("1_3phce")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 9)
@@ -41,12 +42,16 @@ wait_time = 0.075
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 light_mask = 4
 visibility_layer = 4
+collision_layer = 4
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-light_mask = 4
+light_mask = 0
 visibility_layer = 4
-shape = SubResource("CircleShape2D_3cq1a")
+position = Vector2(5.49997, 1.49998)
+scale = Vector2(29.7689, -24.4562)
+shape = SubResource("RectangleShape2D_88pcs")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_m36la")]
 light_mask = 1

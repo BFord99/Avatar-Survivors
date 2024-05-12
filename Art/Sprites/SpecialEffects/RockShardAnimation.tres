@@ -1,0 +1,86 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://cae16j1e5p8s0"]
+
+[ext_resource type="Texture2D" uid="uid://bnl1j2na051f" path="res://Art/Sprites/Earth Effect 01/Earth projectile Spritesheet .png" id="1_16o0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7thx"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xvla"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o3ux"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1oyh"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(144, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stgmq"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wbe4"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boxow"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxu4b"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dihvm"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkxhd"]
+atlas = ExtResource("1_16o0j")
+region = Rect2(240, 0, 48, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7thx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xvla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o3ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1oyh")
+}],
+"loop": true,
+"name": &"RockExplosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stgmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wbe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boxow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxu4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dihvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkxhd")
+}],
+"loop": true,
+"name": &"RockShard",
+"speed": 60.0
+}]

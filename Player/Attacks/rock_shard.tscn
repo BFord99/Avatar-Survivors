@@ -1,25 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cftnnnuedwdwx"]
 
 [ext_resource type="Script" path="res://Player/Attacks/rock_shard.gd" id="1_t7e4v"]
-[ext_resource type="Texture2D" uid="uid://bnl1j2na051f" path="res://Art/Sprites/Earth Effect 01/Earth projectile Spritesheet .png" id="2_bpro6"]
 [ext_resource type="AudioStream" uid="uid://retyciet28ty" path="res://Audio/punch-a-rock-161647.mp3" id="3_4t1cn"]
+[ext_resource type="SpriteFrames" uid="uid://cae16j1e5p8s0" path="res://Art/Sprites/SpecialEffects/RockShardAnimation.tres" id="3_v2nk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_082q5"]
-size = Vector2(11.4, 5.4)
+size = Vector2(20.6667, 9.66667)
 
 [node name="RockShard" type="Area2D" groups=["attack"]]
 top_level = true
-scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_t7e4v")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-12, -8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_bpro6")
-hframes = 6
-vframes = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
@@ -33,7 +25,21 @@ pitch_scale = 2.0
 autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["attack"]]
-position = Vector2(-18.3, -8.4)
+position = Vector2(-13.3333, -0.333333)
 shape = SubResource("RectangleShape2D_082q5")
+
+[node name="RockShardAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_v2nk2")
+animation = &"RockShard"
+autoplay = "RockShard"
+frame_progress = 0.706542
+speed_scale = 0.365
+
+[node name="RockShardDeathAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("3_v2nk2")
+animation = &"RockExplosion"
+frame = 2
+frame_progress = 0.44673
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
