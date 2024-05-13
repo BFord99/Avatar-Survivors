@@ -118,7 +118,7 @@ libraries = {
 
 [node name="sfx_hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_4l20r")
-volume_db = -5.0
+volume_db = -6.5
 
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_a73w0")

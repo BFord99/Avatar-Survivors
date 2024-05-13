@@ -32,6 +32,7 @@ func on_death():
 	await hit_flash_player.animation_finished 
 	visible = false
 	await deathsound.finished
+	print("Enemy Killed")
 	queue_free()
 	
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
@@ -39,10 +40,12 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	knockback = angle * knockback_amount
 	
 	# TODO: check if freeing the queue kills the current function call 
-	if hp <= 0: on_death()
-
-	hitsound.play()
-	hit_flash_player.play("Hit Flash")
-	print("Enemy HP: ", hp)
+	if hp <= 0: 
+		on_death()
+		hit_flash_player.play("Hit Flash")
+	else:
+		hitsound.play()
+		hit_flash_player.play("Hit Flash")
+		print("Enemy HP: ", hp)
 	
 
