@@ -19,12 +19,13 @@ enemy_spawn_delay = 1
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 2
 texture_repeat = 2
-position = Vector2(14, 12)
+position = Vector2(76, -25)
 texture = ExtResource("1_7w14v")
 region_enabled = true
-region_rect = Rect2(4000, 0, 4000, 4000)
+region_rect = Rect2(20000, 0, 20000, 20000)
 
 [node name="Player" parent="." instance=ExtResource("2_yddm1")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_00sru")]
+scale = Vector2(0.996653, 0.995826)
 spawns = Array[ExtResource("5_05eqa")]([SubResource("Resource_ibtqf")])

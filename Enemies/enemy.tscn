@@ -45,6 +45,7 @@ light_mask = 4
 visibility_layer = 4
 collision_layer = 4
 collision_mask = 4
+HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 visible = false

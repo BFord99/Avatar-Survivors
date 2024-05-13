@@ -46,7 +46,7 @@ func attack():
 		if rockShardTimer.is_stopped():
 			rockShardTimer.start()
 
-func _on_hurt_box_hurt(damage):
+func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= damage
 	print("Player HP: " , hp)
 

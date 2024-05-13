@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_082q5")
 sprite_frames = ExtResource("3_v2nk2")
 animation = &"RockShard"
 autoplay = "RockShard"
-frame_progress = 0.706542
+frame_progress = 0.977528
 speed_scale = 0.365
 
 [node name="RockShardDeathAnimation" type="AnimatedSprite2D" parent="."]
