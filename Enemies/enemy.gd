@@ -7,6 +7,9 @@ var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
+@onready var hit_flash_player = $HitAnimPlayer
+@onready var hitsound = $sfx_hit
+@onready var deathsound = $sfx_death
 
 signal remove_from_array(object)
 
@@ -21,13 +24,25 @@ func _physics_process(_delta):
 		sprite.flip_h = true
 	elif direction.x < -0.1:
 		sprite.flip_h = false
-
-
+		
+func on_death(): 
+	emit_signal("remove_from_array", self)
+	deathsound.play()
+	hit_flash_player.play("Hit Flash")
+	await hit_flash_player.animation_finished 
+	visible = false
+	await deathsound.finished
+	queue_free()
+	
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage
 	knockback = angle * knockback_amount
-	if hp <= 0:
-		emit_signal("remove_from_array",self)
-		queue_free()
+	
+	# TODO: check if freeing the queue kills the current function call 
+	if hp <= 0: on_death()
+
+	hitsound.play()
+	hit_flash_player.play("Hit Flash")
 	print("Enemy HP: ", hp)
+	
 

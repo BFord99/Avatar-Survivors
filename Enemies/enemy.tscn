@@ -1,9 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyhh2q2rwjxv8"]
+[gd_scene load_steps=16 format=3 uid="uid://cyhh2q2rwjxv8"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_8e8ge"]
 [ext_resource type="Texture2D" uid="uid://cpqktot470wnm" path="res://Art/Sprites/earthTurtles.png" id="2_0q4fs"]
+[ext_resource type="Shader" uid="uid://nsi64iqhsmgj" path="res://Enemies/enemy.tres" id="2_5de2x"]
 [ext_resource type="PackedScene" uid="uid://cjd10gcwv0yay" path="res://Utility/hurt_box.tscn" id="3_1hkhu"]
 [ext_resource type="PackedScene" uid="uid://crysg8tdrcrgs" path="res://Utility/hit_box.tscn" id="4_37gfe"]
+[ext_resource type="AudioStream" uid="uid://cxt8i187y8i8p" path="res://Audio/hitmarker_2.mp3" id="6_4l20r"]
+[ext_resource type="AudioStream" uid="uid://doo8vy2pve8iw" path="res://Audio/death_sound_rockshard.mp3" id="7_a73w0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4c67"]
+resource_local_to_scene = true
+shader = ExtResource("2_5de2x")
+shader_parameter/Enable = false
+shader_parameter/Flash = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4o7s"]
 size = Vector2(73, 29)
@@ -17,6 +26,43 @@ radius = 34.0147
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8j8p"]
 size = Vector2(73, 29)
 
+[sub_resource type="Animation" id="Animation_o5chb"]
+resource_name = "Hit Flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5yh34"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbuiw"]
+_data = {
+"Hit Flash": SubResource("Animation_o5chb"),
+"RESET": SubResource("Animation_5yh34")
+}
+
 [node name="enemy_earthTurtle" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
@@ -25,6 +71,7 @@ script = ExtResource("1_8e8ge")
 movement_speed = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l4c67")
 position = Vector2(-58, -39)
 scale = Vector2(0.418, 0.5)
 texture = ExtResource("2_0q4fs")
@@ -63,6 +110,19 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(-10.5, 16.5)
 shape = SubResource("RectangleShape2D_l8j8p")
+
+[node name="HitAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cbuiw")
+}
+
+[node name="sfx_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4l20r")
+volume_db = -5.0
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_a73w0")
+volume_db = -10.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
