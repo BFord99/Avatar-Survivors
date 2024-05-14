@@ -14,13 +14,15 @@ var angle = Vector2.ZERO
 signal remove_from_array(object)
 @onready var rockShardAnimation = $RockShardAnimation
 @onready var rockShardDeathAnimation = $RockShardDeathAnimation
+@onready var rockCollision = $CollisionShape2D
+@onready var sndPlay = $snd_play
 
 func _ready():
 	angle = global_position.direction_to(target)
 	rotation = angle.angle() + deg_to_rad(0)
 	match level:
 		1:
-			hp = 2
+			hp = 1
 			speed = 400
 			damage = 5
 			knockback_amount = 200
@@ -40,6 +42,9 @@ func enemy_hit(charge = 1):
 		rockShardDeathAnimation.visible = true
 		rockShardDeathAnimation.play()
 	if hp <= 0:
+		visible = false
+		rockCollision.set_deferred("disabled", true)
+		await sndPlay.finished
 		emit_signal("remove_from_array",self)
 		queue_free()
 		
