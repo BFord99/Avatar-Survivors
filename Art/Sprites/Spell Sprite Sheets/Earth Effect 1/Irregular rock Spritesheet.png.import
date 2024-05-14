@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dml4tksmnqp7f"
-path="res://.godot/imported/Irregular rock Spritesheet.png-f6342843504ebc1351c5659eac3c5725.ctex"
+path="res://.godot/imported/Irregular rock Spritesheet.png-a640ab0a7487a1574ed105b4fe1bade0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Earth Effect 01/Irregular rock Spritesheet.png"
-dest_files=["res://.godot/imported/Irregular rock Spritesheet.png-f6342843504ebc1351c5659eac3c5725.ctex"]
+source_file="res://Art/Sprites/Spell Sprite Sheets/Earth Effect 1/Irregular rock Spritesheet.png"
+dest_files=["res://.godot/imported/Irregular rock Spritesheet.png-a640ab0a7487a1574ed105b4fe1bade0.ctex"]
 
 [params]
 

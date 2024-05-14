@@ -2,19 +2,29 @@ extends CharacterBody2D
 
 var movement_speed = 300
 var hp = 80
+var last_movement =Vector2.UP
 
 #Attacks
 var rockShard = preload("res://Player/Attacks/rock_shard.tscn")
+var waterTornado = preload("res://Player/Attacks/water_tornado.tscn")
 
 #AttackNodes
 @onready var rockShardTimer = get_node("%RockShardTimer")
 @onready var rockShardAttackTimer = get_node("%RockShardAttackTimer")
+@onready var waterTornadoTimer = get_node("%WaterTornadoTimer")
+@onready var waterTornadoAttackTimer = get_node("%WaterTornadoAttackTimer")
 
 #RockShard
 var rockshard_ammo = 0
 var rockshard_baseammo = 1
 var rockshard_attackspeed = 1.5
 var rockshard_level = 1
+
+#WaterTornado
+var watertornado_ammo = 0
+var watertornado_baseammo = 1
+var watertornado_attackspeed = 3
+var watertornado_level = 1
 
 #Enemy Related
 var enemy_close = []
@@ -36,6 +46,9 @@ func movement():
 		sprite.flip_h = true
 	elif mov.x < 0:
 		sprite.flip_h = false
+	
+	if mov != Vector2.ZERO:
+		last_movement = mov
 		
 	velocity = mov.normalized()*movement_speed
 	move_and_slide()
@@ -45,6 +58,11 @@ func attack():
 		rockShardTimer.wait_time = rockshard_attackspeed
 		if rockShardTimer.is_stopped():
 			rockShardTimer.start()
+			
+	if watertornado_level > 0:
+		waterTornadoTimer.wait_time = watertornado_attackspeed
+		if waterTornadoTimer.is_stopped():
+			waterTornadoTimer.start()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= damage
@@ -67,6 +85,24 @@ func _on_rock_shard_attack_timer_timeout():
 			rockShardAttackTimer.start()
 		else:
 			rockShardAttackTimer.stop()
+			
+func _on_water_tornado_timer_timeout():
+	watertornado_ammo += watertornado_baseammo
+	waterTornadoAttackTimer.start()
+
+
+func _on_water_tornado_attack_timer_timeout():
+	if watertornado_ammo > 0:
+		var watertornado_attack = waterTornado.instantiate()
+		watertornado_attack.position = position
+		watertornado_attack.last_movement = last_movement
+		watertornado_attack.level = watertornado_level
+		add_child(watertornado_attack)
+		watertornado_ammo -= 1
+		if watertornado_ammo > 0:
+			waterTornadoAttackTimer.start()
+		else:
+			waterTornadoAttackTimer.stop()
 		
 func get_random_target():
 	if enemy_close.size() > 0:

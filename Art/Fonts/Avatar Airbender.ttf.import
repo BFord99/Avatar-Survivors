@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cq0d432fxx0tl"
-path="res://.godot/imported/Avatar Airbender.ttf-c4bbed59329f2603ea67cc0bf7d464ef.fontdata"
+path="res://.godot/imported/Avatar Airbender.ttf-6d0370d787213c67ada801af4aea0a48.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Avatar Airbender.ttf"
-dest_files=["res://.godot/imported/Avatar Airbender.ttf-c4bbed59329f2603ea67cc0bf7d464ef.fontdata"]
+source_file="res://Art/Fonts/Avatar Airbender.ttf"
+dest_files=["res://.godot/imported/Avatar Airbender.ttf-6d0370d787213c67ada801af4aea0a48.fontdata"]
 
 [params]
 

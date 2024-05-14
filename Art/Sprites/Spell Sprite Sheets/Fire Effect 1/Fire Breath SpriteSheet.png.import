@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4k2srkfeals4"
-path="res://.godot/imported/Impact Spritesheet.png-ea798428729fe7124ff943044186e4fd.ctex"
+uid="uid://cdjq1ecmssqfw"
+path="res://.godot/imported/Fire Breath SpriteSheet.png-a2580fe24842b02abe07ec77e27f2e9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Earth Effect 01/Impact Spritesheet.png"
-dest_files=["res://.godot/imported/Impact Spritesheet.png-ea798428729fe7124ff943044186e4fd.ctex"]
+source_file="res://Art/Sprites/Spell Sprite Sheets/Fire Effect 1/Fire Breath SpriteSheet.png"
+dest_files=["res://.godot/imported/Fire Breath SpriteSheet.png-a2580fe24842b02abe07ec77e27f2e9d.ctex"]
 
 [params]
 

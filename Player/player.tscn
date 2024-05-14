@@ -39,6 +39,14 @@ wait_time = 1.5
 unique_name_in_owner = true
 wait_time = 0.075
 
+[node name="WaterTornadoTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="WaterTornadoAttackTimer" type="Timer" parent="Attack/WaterTornadoTimer"]
+unique_name_in_owner = true
+wait_time = 0.2
+
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 light_mask = 4
 visibility_layer = 4
@@ -65,6 +73,8 @@ shape = SubResource("CapsuleShape2D_68f5h")
 
 [connection signal="timeout" from="Attack/RockShardTimer" to="." method="_on_rock_shard_timer_timeout"]
 [connection signal="timeout" from="Attack/RockShardTimer/RockShardAttackTimer" to="." method="_on_rock_shard_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/WaterTornadoTimer" to="." method="_on_water_tornado_timer_timeout"]
+[connection signal="timeout" from="Attack/WaterTornadoTimer/WaterTornadoAttackTimer" to="." method="_on_water_tornado_attack_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

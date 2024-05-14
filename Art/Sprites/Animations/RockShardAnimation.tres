@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://cae16j1e5p8s0"]
 
-[ext_resource type="Texture2D" uid="uid://bnl1j2na051f" path="res://Art/Sprites/Earth Effect 01/Earth projectile Spritesheet .png" id="1_16o0j"]
+[ext_resource type="Texture2D" uid="uid://bnl1j2na051f" path="res://Art/Sprites/Spell Sprite Sheets/Earth Effect 1/Earth projectile Spritesheet .png" id="1_16o0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7thx"]
 atlas = ExtResource("1_16o0j")

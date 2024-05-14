@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw3yats6i4wb2"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_udman"]
+[ext_resource type="Script" path="res://Utility/MainMenu.gd" id="1_udman"]
 [ext_resource type="Texture2D" uid="uid://d077tqpb21gyg" path="res://Art/Wallpaper/MenuWallpaper.webp" id="2_apiia"]
-[ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Fonts/Avatar Airbender.ttf" id="3_6p4kh"]
-[ext_resource type="FontFile" uid="uid://cy3sky0dijm4v" path="res://Fonts/Herculanum Regular.ttf" id="3_qgauk"]
-[ext_resource type="AudioStream" uid="uid://cwpypryef0fd6" path="res://Audio/The Avatar's Love [Full HQ].mp3" id="5_s8e3p"]
+[ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Art/Fonts/Avatar Airbender.ttf" id="3_6p4kh"]
+[ext_resource type="FontFile" uid="uid://cy3sky0dijm4v" path="res://Art/Fonts/Herculanum Regular.ttf" id="3_qgauk"]
+[ext_resource type="AudioStream" uid="uid://cwpypryef0fd6" path="res://Audio/Music/The Avatar's Love [Full HQ].mp3" id="5_s8e3p"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

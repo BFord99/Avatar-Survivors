@@ -5,8 +5,8 @@
 [ext_resource type="Shader" uid="uid://nsi64iqhsmgj" path="res://Enemies/enemy.tres" id="2_5de2x"]
 [ext_resource type="PackedScene" uid="uid://cjd10gcwv0yay" path="res://Utility/hurt_box.tscn" id="3_1hkhu"]
 [ext_resource type="PackedScene" uid="uid://crysg8tdrcrgs" path="res://Utility/hit_box.tscn" id="4_37gfe"]
-[ext_resource type="AudioStream" uid="uid://cxt8i187y8i8p" path="res://Audio/hitmarker_2.mp3" id="6_4l20r"]
-[ext_resource type="AudioStream" uid="uid://doo8vy2pve8iw" path="res://Audio/death_sound_rockshard.mp3" id="7_a73w0"]
+[ext_resource type="AudioStream" uid="uid://cxt8i187y8i8p" path="res://Audio/SFX/hitmarker_2.mp3" id="6_i8cqo"]
+[ext_resource type="AudioStream" uid="uid://doo8vy2pve8iw" path="res://Audio/SFX/death_sound_rockshard.mp3" id="7_wh8mf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l4c67"]
 resource_local_to_scene = true
@@ -117,12 +117,12 @@ libraries = {
 }
 
 [node name="sfx_hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_4l20r")
+stream = ExtResource("6_i8cqo")
 volume_db = -6.5
 
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_a73w0")
-volume_db = -10.0
+stream = ExtResource("7_wh8mf")
+volume_db = -20.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 

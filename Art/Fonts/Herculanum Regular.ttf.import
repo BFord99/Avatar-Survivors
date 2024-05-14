@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cy3sky0dijm4v"
-path="res://.godot/imported/Herculanum Regular.ttf-ccbf2f458ffe2b79f15a793edba032ed.fontdata"
+path="res://.godot/imported/Herculanum Regular.ttf-dc70f4acf694695b5360f6579dab5fd3.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Herculanum Regular.ttf"
-dest_files=["res://.godot/imported/Herculanum Regular.ttf-ccbf2f458ffe2b79f15a793edba032ed.fontdata"]
+source_file="res://Art/Fonts/Herculanum Regular.ttf"
+dest_files=["res://.godot/imported/Herculanum Regular.ttf-dc70f4acf694695b5360f6579dab5fd3.fontdata"]
 
 [params]
 
