@@ -22,7 +22,7 @@ func _ready():
 	rotation = angle.angle() + deg_to_rad(0)
 	match level:
 		1:
-			hp = 1
+			hp = 3
 			speed = 400
 			damage = 5
 			knockback_amount = 200

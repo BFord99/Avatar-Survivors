@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cyhh2q2rwjxv8"]
+[gd_scene load_steps=15 format=3 uid="uid://cyhh2q2rwjxv8"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_8e8ge"]
 [ext_resource type="Texture2D" uid="uid://cpqktot470wnm" path="res://Art/Sprites/earthTurtles.png" id="2_0q4fs"]
@@ -14,11 +14,8 @@ shader = ExtResource("2_5de2x")
 shader_parameter/Enable = false
 shader_parameter/Flash = Color(1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4o7s"]
-size = Vector2(73, 29)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhdir"]
-radius = 30.0
+radius = 33.0606
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4xvk"]
 radius = 34.0147
@@ -77,17 +74,12 @@ scale = Vector2(0.418, 0.5)
 texture = ExtResource("2_0q4fs")
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-9.5, 14.5)
-shape = SubResource("RectangleShape2D_f4o7s")
-
 [node name="TurtleCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-8, 1)
+position = Vector2(-9, 2)
 shape = SubResource("CircleShape2D_nhdir")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_1hkhu")]
+visible = false
 light_mask = 4
 visibility_layer = 4
 collision_layer = 4
@@ -100,6 +92,7 @@ position = Vector2(-8, 5)
 shape = SubResource("CircleShape2D_n4xvk")
 
 [node name="HitBox" parent="." instance=ExtResource("4_37gfe")]
+visible = false
 light_mask = 2
 visibility_layer = 2
 collision_layer = 2
