@@ -36,12 +36,11 @@ func on_death():
 	emit_signal("remove_from_array", self)
 	deathsound.play()
 	hit_flash_player.play("Hit Flash")
+	await hit_flash_player.animation_finished 
+	visible = false
 	hitBox.set_deferred("disabled", true)
 	hurtBox.set_deferred("disabled", true)
 	turtleCollision.set_deferred("disabled", true)
-	await hit_flash_player.animation_finished 
-	# Maybe have to disable hitbox/hurtbox 
-	visible = false
 	var new_gem = exp_gem.instantiate()
 	new_gem.global_position = global_position
 	new_gem.experience = experience
