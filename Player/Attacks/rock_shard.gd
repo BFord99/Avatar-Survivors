@@ -3,7 +3,14 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 100
-var damage = 5
+
+var is_crit: bool
+var damage: int
+
+var damage_min = 4
+var damage_max = 9
+var crit_chance = 0.2
+
 var knockback_amount = 100
 var attack_size = 1.0
 
@@ -24,7 +31,8 @@ func _ready():
 		1:
 			hp = 3
 			speed = 400
-			damage = 5
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
 			knockback_amount = 200
 			attack_size = 1.0
 			
@@ -35,6 +43,8 @@ func _ready():
 func _physics_process(delta):
 	position += angle*speed*delta
 	
+func damage_gen(): return randi() % damage_max + damage_min  
+
 func enemy_hit(charge = 1):
 	hp -= charge
 	if hp == 1:

@@ -3,7 +3,14 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 100
-var damage = 5
+
+var is_crit: bool
+var damage: int
+
+var damage_min = 4
+var damage_max = 9
+var crit_chance = 0.5
+
 var knockback_amount = 100
 var attack_size = 1.0
 
@@ -22,7 +29,8 @@ func _ready():
 		1:
 			hp = 9999
 			speed = 600.0
-			damage = 5
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
 			knockback_amount = 150
 			attack_size = 1.0
 			
@@ -51,30 +59,21 @@ func _ready():
 	
 	var tween = create_tween()
 	var set_angle = randi_range(0,1)
-	if set_angle == 1:
-		angle = angle_less
-		tween.tween_property(self, "angle", angle_more, 4)
-		tween.tween_property(self, "angle", angle_less, 4)
-		tween.tween_property(self, "angle", angle_more, 4)
-		tween.tween_property(self, "angle", angle_less, 4)
-		tween.tween_property(self, "angle", angle_more, 4)
-		tween.tween_property(self, "angle", angle_less, 4)
-	else:
-		angle = angle_more
-		tween.tween_property(self, "angle", angle_less, 4)
-		tween.tween_property(self, "angle", angle_more, 4)
-		tween.tween_property(self, "angle", angle_less, 4)
-		tween.tween_property(self, "angle", angle_more, 4)
-		tween.tween_property(self, "angle", angle_less, 4)
-		tween.tween_property(self, "angle", angle_more, 4)
-		tween.play()
+	angle = angle_less if set_angle == 1 else angle_more
+	var alternate_angle = angle_more if set_angle == 1 else angle_less
+	for i in range(6):
+		tween.tween_property(self, "angle", alternate_angle, 4)
+		# Why does the interpreter not like the expr below
+		# angle, alternate_angle = alternate_angle, angle
+		var temp = angle
+		angle = alternate_angle
+		alternate_angle = temp
+	if set_angle != 1: tween.play()
 	
-	
+func damage_gen(): return randi() % damage_max + damage_min  
+
 func _physics_process(delta):
 	position += angle*speed*delta
-	
-		
-		
 
 func _on_timer_timeout(_charge = 1):
 	emit_signal("remove_from_array",self)

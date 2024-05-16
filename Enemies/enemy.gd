@@ -31,20 +31,26 @@ func _physics_process(_delta):
 		sprite.flip_h = true
 	elif direction.x < -0.1:
 		sprite.flip_h = false
-		
-func on_death(): 
-	emit_signal("remove_from_array", self)
-	deathsound.play()
+
+func death_view_handler(): 
 	hit_flash_player.play("Hit Flash")
 	await hit_flash_player.animation_finished 
 	visible = false
 	hitBox.set_deferred("disabled", true)
 	hurtBox.set_deferred("disabled", true)
 	turtleCollision.set_deferred("disabled", true)
+
+func on_death(): 
+	emit_signal("remove_from_array", self)
+	deathsound.play()
+	death_view_handler()
+	
+	# TODO: this should be a func that we can call anywhere
 	var new_gem = exp_gem.instantiate()
 	new_gem.global_position = global_position
 	new_gem.experience = experience
 	loot_base.call_deferred("add_child",new_gem)
+	
 	await deathsound.finished
 	print("Enemy Killed")
 	queue_free()
@@ -53,7 +59,6 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage
 	knockback = angle * knockback_amount
 	
-	# TODO: check if freeing the queue kills the current function call 
 	if hp <= 0: 
 		on_death()
 		hit_flash_player.play("Hit Flash")
