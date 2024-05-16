@@ -75,6 +75,7 @@ theme_override_font_sizes/font_size = 35
 text = "Exit"
 
 [node name="AvatarsLove_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("5_s8e3p")
 volume_db = -20.0
 autoplay = true

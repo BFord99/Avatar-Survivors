@@ -66,6 +66,7 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_8e8ge")
 movement_speed = 150
+experience = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l4c67")

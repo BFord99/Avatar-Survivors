@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcteqkc6x3hje"]
+[gd_scene load_steps=13 format=3 uid="uid://dcteqkc6x3hje"]
 
 [ext_resource type="Texture2D" uid="uid://ckmvf2yg5dgbd" path="res://Art/Sprites/aangfix.png" id="1_3phce"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_687op"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8mnrombi1roo" path="res://Art/Sprites/exp_background.png" id="4_8xp5w"]
 [ext_resource type="Texture2D" uid="uid://bmdyo4y1stovf" path="res://Art/Sprites/exp_progress.png" id="5_8aga6"]
 [ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Art/Fonts/Avatar Airbender.ttf" id="6_u47mo"]
+[ext_resource type="AudioStream" uid="uid://cyc8cromje4ce" path="res://Audio/SFX/lvlUp.wav" id="7_tex1y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rttbp"]
 radius = 24.0
@@ -130,10 +131,12 @@ text = "Level: 1"
 
 [node name="LevelUp" type="Panel" parent="GUILayer/GUI/ExperienceBar"]
 unique_name_in_owner = true
+process_mode = 2
+visible = false
 layout_mode = 0
-offset_left = 610.0
+offset_left = 2500.0
 offset_top = 140.0
-offset_right = 1310.0
+offset_right = 3200.0
 offset_bottom = 940.0
 
 [node name="lbl_LevelUp" type="Label" parent="GUILayer/GUI/ExperienceBar/LevelUp"]
@@ -156,6 +159,9 @@ offset_bottom = 310.0
 
 [node name="snd_levelup" type="AudioStreamPlayer2D" parent="GUILayer/GUI/ExperienceBar/LevelUp"]
 unique_name_in_owner = true
+stream = ExtResource("7_tex1y")
+volume_db = -25.0
+pitch_scale = 0.75
 
 [connection signal="timeout" from="Attack/RockShardTimer" to="." method="_on_rock_shard_timer_timeout"]
 [connection signal="timeout" from="Attack/RockShardTimer/RockShardAttackTimer" to="." method="_on_rock_shard_attack_timer_timeout"]

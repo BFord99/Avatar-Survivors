@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://pcwvh0flo2qx"]
+[gd_scene load_steps=9 format=3 uid="uid://pcwvh0flo2qx"]
 
 [ext_resource type="Texture2D" uid="uid://hbhykqfftsyi" path="res://Art/Map Art/Sand_Tile_01.png" id="1_7w14v"]
 [ext_resource type="PackedScene" uid="uid://dcteqkc6x3hje" path="res://Player/player.tscn" id="2_yddm1"]
 [ext_resource type="PackedScene" uid="uid://d0hutw66muxcu" path="res://Utility/enemy_spawner.tscn" id="3_00sru"]
 [ext_resource type="PackedScene" uid="uid://cyhh2q2rwjxv8" path="res://Enemies/enemy.tscn" id="4_cdbti"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_05eqa"]
+[ext_resource type="AudioStream" uid="uid://c7c8uyjon46ro" path="res://Audio/Music/agniKai.mp3" id="6_p0kur"]
+[ext_resource type="Texture2D" uid="uid://qqi6vdd07pt" path="res://Art/Map Art/DeadTree_02.png" id="7_kfmh0"]
 
 [sub_resource type="Resource" id="Resource_ibtqf"]
 script = ExtResource("5_05eqa")
@@ -31,3 +33,51 @@ scale = Vector2(0.996653, 0.995826)
 spawns = Array[ExtResource("5_05eqa")]([SubResource("Resource_ibtqf")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_p0kur")
+volume_db = -40.0
+autoplay = true
+
+[node name="DeadTree02" type="Sprite2D" parent="."]
+position = Vector2(-1128, -372)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree06" type="Sprite2D" parent="."]
+position = Vector2(2072, 893)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree05" type="Sprite2D" parent="."]
+position = Vector2(-91, -1559)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree03" type="Sprite2D" parent="."]
+position = Vector2(659, -443)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree08" type="Sprite2D" parent="."]
+position = Vector2(635, 1517)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree07" type="Sprite2D" parent="."]
+position = Vector2(1756, -1096)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree04" type="Sprite2D" parent="."]
+position = Vector2(-704, 654)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree10" type="Sprite2D" parent="."]
+position = Vector2(-2017, 1175)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree09" type="Sprite2D" parent="."]
+position = Vector2(-1345, -1354)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
