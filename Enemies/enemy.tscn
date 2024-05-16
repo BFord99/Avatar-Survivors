@@ -41,6 +41,9 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_bym5r"]
+resource_name = "Hit Flash CRIT"
+
 [sub_resource type="Animation" id="Animation_5yh34"]
 length = 0.001
 tracks/0/type = "value"
@@ -55,9 +58,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
-
-[sub_resource type="Animation" id="Animation_bym5r"]
-resource_name = "Hit Flash CRIT"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbuiw"]
 _data = {
@@ -126,9 +126,11 @@ volume_db = -20.0
 
 [node name="sfx_crit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_mkv70")
+volume_db = -5.0
 
 [node name="sfx_crit_death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_vsvu2")
+volume_db = -10.0
 
 [node name="DamageNumbersPoint" type="Node2D" parent="."]
 position = Vector2(-6, -38)
