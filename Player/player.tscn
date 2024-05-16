@@ -139,9 +139,9 @@ offset_bottom = 940.0
 [node name="lbl_LevelUp" type="Label" parent="GUILayer/GUI/ExperienceBar/LevelUp"]
 layout_mode = 0
 offset_right = 702.0
-offset_bottom = 99.0
+offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("6_u47mo")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 90
 text = "Level Up !"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -149,8 +149,10 @@ vertical_alignment = 1
 [node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/ExperienceBar/LevelUp"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 650.0
+offset_bottom = 310.0
 
 [node name="snd_levelup" type="AudioStreamPlayer2D" parent="GUILayer/GUI/ExperienceBar/LevelUp"]
 unique_name_in_owner = true
