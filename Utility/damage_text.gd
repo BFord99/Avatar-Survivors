@@ -1,22 +1,28 @@
 extends Node
 
+var element_to_color = { 
+	GlobalEnums.attackElement.WATER: "#3377FF", 
+	GlobalEnums.attackElement.EARTH: "#774411", 
+	GlobalEnums.attackElement.FIRE: "#FF4422",  
+	GlobalEnums.attackElement.AIR: "#AACCFF",    
+	GlobalEnums.attackElement.NONE: "#CCCCCC",  
+}
 
 # This solution works with no animation 
-# Best way to make this better in the future is to not use tweens, get a sprite
+# Best way to make this better in the future is to not use tweens, get a bitmap
 # sheet with numbers 0-9 and just build it ourselves
 # I'd like if the animation for crits and normal hits was different
-# What could also be cool is that each ability has a 'school' attached to it
-# Which would influence the color of the damage text
-# Maybe Ill write it
-func display_damage(damage: int, position: Vector2, is_crit:bool):
+
+# TODO: make crits do something unique 
+# TODO: make damage scale gradient for text
+func display_damage(damage: int, position: Vector2, is_crit:bool, element):
 	var number = Label.new() 
 	number.global_position = position
 	number.text = str(damage)
 	number.z_index = 5
 	number.label_settings = LabelSettings.new()
 
-	var color = "#FFF"
-	if is_crit: color = "B22"
+	var color = element_to_color[element]
 
 	number.label_settings.font_color = color
 	number.label_settings.font_size = damage * 5 

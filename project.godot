@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 DamageText="*res://Utility/damage_text.gd"
+GlobalEnums="*res://Utility/enums.gd"
 
 [display]
 

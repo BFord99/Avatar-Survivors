@@ -5,6 +5,7 @@ extends Area2D
 
 @export var damage = 1
 @export var is_crit = false
+@export var element = GlobalEnums.attackElement.NONE
 
 
 func tempdisable():
