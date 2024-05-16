@@ -4,6 +4,7 @@ extends Area2D
 @onready var disableTimer = $DisableHitBoxTimer
 
 @export var damage = 1
+@export var is_crit = false
 
 
 func tempdisable():

@@ -78,7 +78,7 @@ func attack():
 		if waterTornadoTimer.is_stopped():
 			waterTornadoTimer.start()
 
-func _on_hurt_box_hurt(damage, _angle, _knockback):
+func _on_hurt_box_hurt(damage, _angle, _knockback, crit_chance):
 	hp -= damage
 	print("Player HP: " , hp)
 

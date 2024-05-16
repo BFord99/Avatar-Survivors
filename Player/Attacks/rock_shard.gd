@@ -8,7 +8,7 @@ var is_crit: bool
 var damage: int
 
 var damage_min = 4
-var damage_max = 9
+var damage_max = 8
 var crit_chance = 0.2
 
 var knockback_amount = 100
@@ -43,7 +43,8 @@ func _ready():
 func _physics_process(delta):
 	position += angle*speed*delta
 	
-func damage_gen(): return randi() % damage_max + damage_min  
+func damage_gen(): 
+	return randi() % damage_max + damage_min 
 
 func enemy_hit(charge = 1):
 	hp -= charge
@@ -58,9 +59,6 @@ func enemy_hit(charge = 1):
 		emit_signal("remove_from_array",self)
 		queue_free()
 		
-		
-
-
 func _on_timer_timeout():
 	emit_signal("remove_from_array",self)
 	queue_free()

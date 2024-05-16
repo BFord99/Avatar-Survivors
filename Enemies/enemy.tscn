@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyhh2q2rwjxv8"]
+[gd_scene load_steps=16 format=3 uid="uid://cyhh2q2rwjxv8"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_8e8ge"]
 [ext_resource type="Texture2D" uid="uid://cpqktot470wnm" path="res://Art/Sprites/earthTurtles.png" id="2_0q4fs"]
@@ -54,9 +54,13 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_bym5r"]
+resource_name = "Hit Flash CRIT"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbuiw"]
 _data = {
 "Hit Flash": SubResource("Animation_o5chb"),
+"Hit Flash CRIT": SubResource("Animation_bym5r"),
 "RESET": SubResource("Animation_5yh34")
 }
 
@@ -117,6 +121,9 @@ volume_db = -6.5
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_wh8mf")
 volume_db = -20.0
+
+[node name="DamageNumbersPoint" type="Node2D" parent="."]
+position = Vector2(-6, -38)
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
