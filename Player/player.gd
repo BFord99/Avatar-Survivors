@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var movement_speed = 300
 var hp = 80
+var maxhp = 80
 var last_movement =Vector2.UP
 
 var experience = 0
@@ -18,17 +19,26 @@ var waterTornado = preload("res://Player/Attacks/water_tornado.tscn")
 @onready var waterTornadoTimer = get_node("%WaterTornadoTimer")
 @onready var waterTornadoAttackTimer = get_node("%WaterTornadoAttackTimer")
 
+#UPGRADES
+var collected_upgrades = []
+var upgrade_options = []
+var armor = 0
+var speed = 0
+var spell_cooldown = 0
+var spell_size = 0
+var additional_attacks = 0
+
 #RockShard
 var rockshard_ammo = 0
-var rockshard_baseammo = 1
+var rockshard_baseammo = 0
 var rockshard_attackspeed = 1.5
-var rockshard_level = 1
+var rockshard_level = 0
 
 #WaterTornado
 var watertornado_ammo = 0
-var watertornado_baseammo = 2
+var watertornado_baseammo = 0
 var watertornado_attackspeed = 3
-var watertornado_level = 1
+var watertornado_level = 0
 
 #Enemy Related
 var enemy_close = []
@@ -37,7 +47,7 @@ var enemy_close = []
 
 #GUI
 @onready var expBar = get_node("%ExperienceBar")
-@onready var lblLevel = get_node("%lbl_level")
+@onready var lblLevel = get_node("%lbl_levelCount")
 @onready var levelPanel = get_node("%LevelUp")
 @onready var upgradeOptions = get_node("%UpgradeOptions")
 @onready var itemOptions = preload("res://Utility/item_option.tscn")
@@ -69,22 +79,22 @@ func movement():
 	
 func attack():
 	if rockshard_level > 0:
-		rockShardTimer.wait_time = rockshard_attackspeed
+		rockShardTimer.wait_time = rockshard_attackspeed * (1-spell_cooldown)
 		if rockShardTimer.is_stopped():
 			rockShardTimer.start()
 			
 	if watertornado_level > 0:
-		waterTornadoTimer.wait_time = watertornado_attackspeed
+		waterTornadoTimer.wait_time = watertornado_attackspeed * (1-spell_cooldown)
 		if waterTornadoTimer.is_stopped():
 			waterTornadoTimer.start()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback, crit_chance,element):
-	hp -= damage
+	hp -= clamp(damage-armor, 1.0, 999.0)
 	print("Player HP: " , hp)
 
 
 func _on_rock_shard_timer_timeout():
-	rockshard_ammo += rockshard_baseammo
+	rockshard_ammo += rockshard_baseammo + additional_attacks
 	rockShardAttackTimer.start()
 
 func _on_rock_shard_attack_timer_timeout():
@@ -101,7 +111,7 @@ func _on_rock_shard_attack_timer_timeout():
 			rockShardAttackTimer.stop()
 			
 func _on_water_tornado_timer_timeout():
-	watertornado_ammo += watertornado_baseammo
+	watertornado_ammo += watertornado_baseammo + additional_attacks
 	waterTornadoAttackTimer.start()
 
 
@@ -187,16 +197,90 @@ func levelup():
 	var optionsmax = 3
 	while options < optionsmax:
 		var option_choice = itemOptions.instantiate()
+		option_choice.item = get_random_item()
 		upgradeOptions.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
 	
 func upgrade_character(upgrade):
+	match upgrade:
+		"rockShard1":
+			rockshard_level = 1
+			rockshard_baseammo += 1
+		"rockShard2":
+			rockshard_level = 2
+		"rockShard3":
+			rockshard_level = 3
+			rockshard_baseammo += 1
+		"rockShard4":
+			rockshard_level = 4
+			rockshard_baseammo += 2
+		"waterTornado1":
+			watertornado_level = 1
+			watertornado_baseammo += 1
+		"waterTornado2":
+			watertornado_level = 2
+			watertornado_baseammo += 1
+		"waterTornado3":
+			watertornado_level = 3
+			watertornado_baseammo += 1
+			watertornado_attackspeed -= .5
+		"waterTornado4":
+			watertornado_level = 4
+			watertornado_baseammo += 1
+			watertornado_attackspeed -= .5
+		"armor1","armor2","armor3","armor4":
+			armor += 1
+		"speed1","speed2","speed3","speed4":
+			movement_speed += 20.0
+		"tome1","tome2","tome3","tome4":
+			spell_size += 0.10
+		"scroll1","scroll2","scroll3","scroll4":
+			spell_cooldown += 0.05
+		"hat1","hat2":
+			additional_attacks += 1
+		"food":
+			hp += 20
+			hp = clamp(hp,0,maxhp)
+	
+	attack()
 	var option_children = upgradeOptions.get_children()
 	for i in option_children:
 		i.queue_free()
+	upgrade_options.clear()
+	collected_upgrades.append(upgrade)
 	levelPanel.visible = false
 	levelPanel.position = Vector2(2500,140)
 	get_tree().paused = false
 	calculate_experience(0)
 	
+func get_random_item():
+	var dblist = []
+	for i in UpgradeDb.UPGRADES:
+		if i in collected_upgrades: # Find already collected upgrades
+			pass
+		elif i in upgrade_options: # If the upgrade is already an option
+			pass
+		elif UpgradeDb.UPGRADES[i]["type"] == "item": # Don't pick food
+			pass
+		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: # Check for prereq
+			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
+				if not n in collected_upgrades:
+					pass
+				else:
+					dblist.append(i)
+		else:
+			dblist.append(i)
+	if dblist.size() > 0:
+		var randomItem = dblist.pick_random()
+		upgrade_options.append(randomItem)
+		return randomItem
+	else:
+		return null
+		
+			
+
+
+
+
+

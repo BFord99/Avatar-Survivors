@@ -33,7 +33,28 @@ func _ready():
 			is_crit = randf() < crit_chance 
 			damage = damage_gen() * 2 if is_crit else damage_gen()
 			knockback_amount = 150
-			attack_size = 1.0
+			attack_size = 1.0 * (1 + player.spell_size)
+		2:
+			hp = 9999
+			speed = 600.0
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
+			knockback_amount = 225
+			attack_size = 1.0 * (1 + player.spell_size)
+		3:
+			hp = 9999
+			speed = 600.0
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
+			knockback_amount = 225
+			attack_size = 1.0 * (1 + player.spell_size)
+		4:
+			hp = 9999
+			speed = 600.0
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
+			knockback_amount = 225
+			attack_size = 1.0 * (1 + player.spell_size)
 			
 	var move_to_less = Vector2.ZERO
 	var move_to_more = Vector2.ZERO

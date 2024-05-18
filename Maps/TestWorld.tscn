@@ -1,19 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://pcwvh0flo2qx"]
+[gd_scene load_steps=12 format=3 uid="uid://pcwvh0flo2qx"]
 
-[ext_resource type="Texture2D" uid="uid://hbhykqfftsyi" path="res://Art/Map Art/Sand_Tile_01.png" id="1_7w14v"]
+[ext_resource type="Texture2D" uid="uid://hbhykqfftsyi" path="res://Art/MapArt/Sand_Tile_01.png" id="1_7w14v"]
 [ext_resource type="PackedScene" uid="uid://dcteqkc6x3hje" path="res://Player/player.tscn" id="2_yddm1"]
 [ext_resource type="PackedScene" uid="uid://d0hutw66muxcu" path="res://Utility/enemy_spawner.tscn" id="3_00sru"]
 [ext_resource type="PackedScene" uid="uid://cyhh2q2rwjxv8" path="res://Enemies/enemy.tscn" id="4_cdbti"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_05eqa"]
 [ext_resource type="AudioStream" uid="uid://c7c8uyjon46ro" path="res://Audio/Music/agniKai.mp3" id="6_p0kur"]
-[ext_resource type="Texture2D" uid="uid://qqi6vdd07pt" path="res://Art/Map Art/DeadTree_02.png" id="7_kfmh0"]
+[ext_resource type="Texture2D" uid="uid://qqi6vdd07pt" path="res://Art/MapArt/DeadTree_02.png" id="7_kfmh0"]
+[ext_resource type="PackedScene" uid="uid://cxqvfdostm76j" path="res://Objects/ExperienceGem.tscn" id="8_4cujn"]
 
 [sub_resource type="Resource" id="Resource_ibtqf"]
 script = ExtResource("5_05eqa")
 time_start = 0
-time_end = 60
+time_end = 180
 enemy = ExtResource("4_cdbti")
 enemy_num = 3
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_47wsk"]
+script = ExtResource("5_05eqa")
+time_start = 60
+time_end = 180
+enemy = ExtResource("4_cdbti")
+enemy_num = 3
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_ul5qk"]
+script = ExtResource("5_05eqa")
+time_start = 120
+time_end = 180
+enemy = ExtResource("4_cdbti")
+enemy_num = 12
 enemy_spawn_delay = 1
 
 [node name="TestWorld" type="Node2D"]
@@ -30,7 +47,7 @@ region_rect = Rect2(20000, 0, 20000, 20000)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_00sru")]
 scale = Vector2(0.996653, 0.995826)
-spawns = Array[ExtResource("5_05eqa")]([SubResource("Resource_ibtqf")])
+spawns = Array[ExtResource("5_05eqa")]([SubResource("Resource_ibtqf"), SubResource("Resource_47wsk"), SubResource("Resource_ul5qk")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
@@ -81,3 +98,7 @@ texture = ExtResource("7_kfmh0")
 position = Vector2(-1345, -1354)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
+
+[node name="ExperienceGem" parent="." instance=ExtResource("8_4cujn")]
+position = Vector2(-432, 8)
+experience = 50

@@ -15,7 +15,7 @@ var element_to_color = {
 
 # TODO: make crits do something unique 
 # TODO: make damage scale gradient for text
-func display_damage(damage: int, position: Vector2, is_crit:bool, element):
+func display_damage(damage: int, position: Vector2, _is_crit:bool, element):
 	var number = Label.new() 
 	number.global_position = position
 	number.text = str(damage)

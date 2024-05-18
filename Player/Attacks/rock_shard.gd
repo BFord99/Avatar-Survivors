@@ -31,12 +31,33 @@ func _ready():
 	rotation = angle.angle() + deg_to_rad(0)
 	match level:
 		1:
+			hp = 1
+			speed = 400
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
+			knockback_amount = 200
+			attack_size = 1.0 * (1+player.spell_size)
+		2:
 			hp = 3
 			speed = 400
 			is_crit = randf() < crit_chance 
 			damage = damage_gen() * 2 if is_crit else damage_gen()
 			knockback_amount = 200
-			attack_size = 1.0
+			attack_size = 1.0 * (1+player.spell_size)
+		3:
+			hp = 3
+			speed = 400
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
+			knockback_amount = 200
+			attack_size = 1.0 * (1+player.spell_size)
+		4:
+			hp = 3
+			speed = 400
+			is_crit = randf() < crit_chance 
+			damage = damage_gen() * 2 if is_crit else damage_gen()
+			knockback_amount = 200
+			attack_size = 1.0 * (1+player.spell_size)
 			
 	var tween = create_tween()
 	tween.tween_property(self,"scale", Vector2(5,5)*attack_size,1).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
