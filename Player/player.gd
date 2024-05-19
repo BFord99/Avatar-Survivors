@@ -250,6 +250,7 @@ func upgrade_character(upgrade):
 		"food":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
+			_on_hurt_box_hurt(0,0,0,0,0)
 	
 	attack()
 	var option_children = upgradeOptions.get_children()
