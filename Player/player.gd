@@ -3,7 +3,9 @@ extends CharacterBody2D
 var movement_speed = 300
 var hp = 80
 var maxhp = 80
-var last_movement =Vector2.UP
+var last_movement = Vector2.UP
+var time = 0
+var pass_time = 0
 
 var experience = 0
 var experience_level = 1
@@ -52,15 +54,20 @@ var enemy_close = []
 @onready var upgradeOptions = get_node("%UpgradeOptions")
 @onready var itemOptions = preload("res://Utility/item_option.tscn")
 @onready var sndLevelUp = get_node("%snd_levelup")
+@onready var healthBar = get_node("%HealthBar")
+@onready var lblTimer = get_node("%lblTimer")
 
 
 func _ready():
 	attack()
 	set_expbar(experience, calculate_experiencecap())
+	_on_hurt_box_hurt(0,0,0,0,0)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
 	movement()
+	pass_time += delta
+	change_time()
 	
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -90,7 +97,8 @@ func attack():
 
 func _on_hurt_box_hurt(damage, _angle, _knockback, crit_chance,element):
 	hp -= clamp(damage-armor, 1.0, 999.0)
-	print("Player HP: " , hp)
+	healthBar.max_value = maxhp
+	healthBar.value = hp
 
 
 func _on_rock_shard_timer_timeout():
@@ -190,7 +198,7 @@ func levelup():
 	lblLevel.text = str("Level: ", experience_level)
 	# Moving Level Up UI onto screen
 	var tween = levelPanel.create_tween()
-	tween.tween_property(levelPanel,"position",Vector2(610,140),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.tween_property(levelPanel,"position",Vector2(620,206),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()
 	levelPanel.visible = true
 	var options = 0
@@ -279,6 +287,16 @@ func get_random_item():
 		return null
 		
 			
+func change_time():
+	var time = int(pass_time)
+	var m = int(time / 60.0)
+	var s = time % 60
+	if m < 10:
+		m = str(0, m)
+	if s < 10:
+		s = str(0, s)
+		
+	lblTimer.text = str(m, ":", s)
 
 
 

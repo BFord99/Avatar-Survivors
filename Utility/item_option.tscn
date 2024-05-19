@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://616cyie0ebne"]
+[gd_scene load_steps=5 format=3 uid="uid://616cyie0ebne"]
 
 [ext_resource type="Script" path="res://Utility/item_option.gd" id="1_gayxi"]
 [ext_resource type="Texture2D" uid="uid://5gcnh8uwreq3" path="res://Art/Sprites/waterIcon.png" id="1_n44u6"]
+[ext_resource type="Texture2D" uid="uid://bv0v7m8lo28dn" path="res://Art/UIArt/earthBanner.png" id="2_slw68"]
 [ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Art/Fonts/Avatar Airbender.ttf" id="2_vm6bg"]
 
 [node name="ItemOption" type="ColorRect"]
@@ -11,16 +12,23 @@ anchor_right = 0.292
 anchor_bottom = 0.148
 offset_right = -0.640076
 offset_bottom = 0.160004
-color = Color(0.54902, 0.54902, 0.54902, 1)
+color = Color(0.54902, 0.54902, 0.54902, 0)
 script = ExtResource("1_gayxi")
+
+[node name="banner" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 560.0
+offset_bottom = 160.0
+texture = ExtResource("2_slw68")
+expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 119.0
-offset_bottom = 109.0
-color = Color(0, 0, 0, 1)
+offset_left = 5.0
+offset_top = 30.0
+offset_right = 116.0
+offset_bottom = 130.0
+color = Color(0, 0, 0, 0)
 
 [node name="ItemIcon" type="TextureRect" parent="ColorRect"]
 layout_mode = 0
@@ -32,31 +40,33 @@ texture = ExtResource("1_n44u6")
 [node name="lbl_name" type="Label" parent="."]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 5.0
+offset_top = 12.0
 offset_right = 272.0
-offset_bottom = 61.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vm6bg")
-theme_override_font_sizes/font_size = 55
+theme_override_font_sizes/font_size = 45
 text = "Name"
-horizontal_alignment = 1
 
 [node name="lbl_description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 81.0
-offset_right = 549.0
+offset_top = 59.0
+offset_right = 407.0
 offset_bottom = 154.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vm6bg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 text = "Description of Item"
 autowrap_mode = 3
 
 [node name="lbl_level" type="Label" parent="."]
 layout_mode = 0
-offset_left = 450.0
+offset_left = 432.0
 offset_top = 9.0
-offset_right = 556.0
+offset_right = 538.0
 offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vm6bg")
 theme_override_font_sizes/font_size = 38
 text = "Level: 1

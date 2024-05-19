@@ -2,9 +2,11 @@ extends Node
 
 const ICON_PATH = "res://Art/UpgradeArt/"
 const ABILITY_PATH = "res://Art/AbilityArt/"
+const UI_PATH = "res://Art/UIArt/"
 const UPGRADES = {
 	"rockShard1": {
 		"icon": ABILITY_PATH + "earthShardIcon.png",
+		"banner": UI_PATH + "earthBanner.png",
 		"displayname": "Rock Shard",
 		"details": "A chunk of ground is kicked at a random enemy",
 		"level": "Level: 1",
@@ -13,6 +15,7 @@ const UPGRADES = {
 	},
 	"rockShard2": {
 		"icon": ABILITY_PATH + "earthShardIcon.png",
+		"banner": UI_PATH + "earthBanner.png",
 		"displayname": "Rock Shard",
 		"details": "A more durable chunk of ground is kicked",
 		"level": "Level: 2",
@@ -21,6 +24,7 @@ const UPGRADES = {
 	},
 	"rockShard3": {
 		"icon": ABILITY_PATH + "earthShardIcon.png",
+		"banner": UI_PATH + "earthBanner.png",
 		"displayname": "Rock Shard",
 		"details": "An additional shard is kicked",
 		"level": "Level: 3",
@@ -29,6 +33,7 @@ const UPGRADES = {
 	},
 	"rockShard4": {
 		"icon": ABILITY_PATH + "earthShardIcon.png",
+		"banner": UI_PATH + "earthBanner.png",
 		"displayname": "Rock Shard",
 		"details": "Two more shards are kicked",
 		"level": "Level: 4",
@@ -37,6 +42,7 @@ const UPGRADES = {
 	},
 	"waterTornado1": {
 		"icon": ABILITY_PATH + "waterTornadoIcon.png",
+		"banner": UI_PATH + "waterBanner.png",
 		"displayname": "Water Tornado",
 		"details": "Conjure a violent rotating column of water",
 		"level": "Level: 1",
@@ -45,6 +51,7 @@ const UPGRADES = {
 	},
 	"waterTornado2": {
 		"icon": ABILITY_PATH + "waterTornadoIcon.png",
+		"banner": UI_PATH + "waterBanner.png",
 		"displayname": "Water Tornado",
 		"details": "An additional tornado is created and tornados gain 25% additional knockback",
 		"level": "Level: 2",
@@ -53,6 +60,7 @@ const UPGRADES = {
 	},
 	"waterTornado3": {
 		"icon": ABILITY_PATH + "waterTornadoIcon.png",
+		"banner": UI_PATH + "waterBanner.png",
 		"displayname": "Water Tornado",
 		"details": "An additonal tornado is created and cooldown reduced by .5 second",
 		"level": "Level: 3",
@@ -61,6 +69,7 @@ const UPGRADES = {
 	},
 	"waterTornado4": {
 		"icon": ABILITY_PATH + "waterTornadoIcon.png",
+		"banner": UI_PATH + "waterBanner.png",
 		"displayname": "Water Tornado",
 		"details": "An additonal tornado is created and cooldown reduced by .5 second",
 		"level": "Level: 4",
@@ -69,6 +78,7 @@ const UPGRADES = {
 	},
 	"armor1": {
 		"icon": ICON_PATH + "armor.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Armor",
 		"details": "Reduce incoming damage by an additional 1 point",
 		"level": "Level: 1",
@@ -77,6 +87,7 @@ const UPGRADES = {
 	},
 	"armor2": {
 		"icon": ICON_PATH + "armor.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Armor",
 		"details": "Reduce incoming damage by an additional 1 point",
 		"level": "Level: 2",
@@ -85,6 +96,7 @@ const UPGRADES = {
 	},
 	"armor3": {
 		"icon": ICON_PATH + "armor.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Armor",
 		"details": "Reduce incoming damage by an additional 1 point",
 		"level": "Level: 3",
@@ -93,6 +105,7 @@ const UPGRADES = {
 	},
 	"armor4": {
 		"icon": ICON_PATH + "armor.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Armor",
 		"details": "Reduce incoming damage by an additional 1 point",
 		"level": "Level: 4",
@@ -101,6 +114,7 @@ const UPGRADES = {
 	},
 	"speed1": {
 		"icon": ICON_PATH + "boot.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Speed",
 		"details": "Movement speed increased by an additional 50% of base speed",
 		"level": "Level: 1",
@@ -109,6 +123,7 @@ const UPGRADES = {
 	},
 		"speed2": {
 		"icon": ICON_PATH + "boot.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Speed",
 		"details": "Movement speed increased by an additional 50% of base speed",
 		"level": "Level: 2",
@@ -117,6 +132,7 @@ const UPGRADES = {
 	},
 		"speed3": {
 		"icon": ICON_PATH + "boot.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Speed",
 		"details": "Movement speed increased by an additional 50% of base speed",
 		"level": "Level: 3",
@@ -125,6 +141,7 @@ const UPGRADES = {
 	},
 		"speed4": {
 		"icon": ICON_PATH + "boot.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Speed",
 		"details": "Movement speed increased by 50% of base speed",
 		"level": "Level: 4",
@@ -133,6 +150,7 @@ const UPGRADES = {
 	},
 		"tome1": {
 		"icon": ICON_PATH + "book.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Tome",
 		"details": "Incease the size of spells by 10% of base size",
 		"level": "Level: 1",
@@ -141,6 +159,7 @@ const UPGRADES = {
 	},
 		"tome2": {
 		"icon": ICON_PATH + "book.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Tome",
 		"details": "Incease the size of spells by an additional 10% of base size",
 		"level": "Level: 2",
@@ -149,6 +168,7 @@ const UPGRADES = {
 	},
 		"tome3": {
 		"icon": ICON_PATH + "book.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Tome",
 		"details": "Incease the size of spells by an additional 10% of base size",
 		"level": "Level: 3",
@@ -157,6 +177,7 @@ const UPGRADES = {
 	},
 		"tome4": {
 		"icon": ICON_PATH + "book.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Tome",
 		"details": "Incease the size of spells by an additional 10% of base size",
 		"level": "Level: 4",
@@ -165,6 +186,7 @@ const UPGRADES = {
 	},
 		"scroll1": {
 		"icon": ICON_PATH + "scroll.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Scroll",
 		"details": "Decrease the cooldown of spells by 10% of base time",
 		"level": "Level: 1",
@@ -173,6 +195,7 @@ const UPGRADES = {
 	},
 		"scroll2": {
 		"icon": ICON_PATH + "scroll.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Scroll",
 		"details": "Decrease the cooldown of spells by an additional 10% of base time",
 		"level": "Level: 2",
@@ -181,6 +204,7 @@ const UPGRADES = {
 	},
 		"scroll3": {
 		"icon": ICON_PATH + "scroll.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Scroll",
 		"details": "Decrease the cooldown of spells by an additional 10% of base time",
 		"level": "Level: 3",
@@ -189,6 +213,7 @@ const UPGRADES = {
 	},
 		"scroll4": {
 		"icon": ICON_PATH + "scroll.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Scroll",
 		"details": "Decrease the cooldown of spells by an additional 10% of base time",
 		"level": "Level: 4",
@@ -197,6 +222,7 @@ const UPGRADES = {
 	},
 		"hat1": {
 		"icon": ICON_PATH + "hat.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Magic Hat",
 		"details": "Your spells now spawn 1 more additional attack",
 		"level": "Level: 1",
@@ -205,6 +231,7 @@ const UPGRADES = {
 	},
 		"hat2": {
 		"icon": ICON_PATH + "hat.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Magic Hat",
 		"details": "Your spells now spawn 1 more additional attack",
 		"level": "Level: 2",
@@ -214,6 +241,7 @@ const UPGRADES = {
 
 	"food": {
 		"icon": ICON_PATH + "ham.png",
+		"banner": UI_PATH + "airBanner.png",
 		"displayname": "Food",
 		"details": "Heals you for 20 health",
 		"level": "N/A",

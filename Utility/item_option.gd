@@ -4,6 +4,7 @@ extends ColorRect
 @onready var lblDescription = $lbl_description
 @onready var lblLevel = $lbl_level
 @onready var itemIcon = $ColorRect/ItemIcon
+@onready var banner = $banner
 
 var mouse_over = false
 var item = null
@@ -19,6 +20,7 @@ func _ready():
 	lblDescription.text = UpgradeDb.UPGRADES[item]["details"]
 	lblLevel.text = UpgradeDb.UPGRADES[item]["level"]
 	itemIcon.texture = load(UpgradeDb.UPGRADES[item]["icon"])
+	banner.texture = load(UpgradeDb.UPGRADES[item]["banner"])
 
 func _input(event):
 	if event.is_action("click"):
