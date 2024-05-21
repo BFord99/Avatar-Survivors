@@ -101,4 +101,4 @@ texture = ExtResource("7_kfmh0")
 
 [node name="ExperienceGem" parent="." instance=ExtResource("8_4cujn")]
 position = Vector2(-432, 8)
-experience = 2000
+experience = 50

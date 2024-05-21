@@ -56,7 +56,9 @@ var enemy_close = []
 @onready var sndLevelUp = get_node("%snd_levelup")
 @onready var healthBar = get_node("%HealthBar")
 @onready var lblTimer = get_node("%lblTimer")
-
+@onready var collectedAbilities = get_node("%CollectedAbilities")
+@onready var collectedUpgrades = get_node("%CollectedUpgrades")
+@onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
 
 func _ready():
 	attack()
@@ -252,6 +254,7 @@ func upgrade_character(upgrade):
 			hp = clamp(hp,0,maxhp)
 			_on_hurt_box_hurt(0,0,0,0,0)
 	
+	adjust_gui_collection(upgrade)
 	attack()
 	var option_children = upgradeOptions.get_children()
 	for i in option_children:
@@ -299,7 +302,21 @@ func change_time():
 		
 	lblTimer.text = str(m, ":", s)
 
-
+func adjust_gui_collection(upgrade):
+	var get_upgraded_displaynames = UpgradeDb.UPGRADES[upgrade]["displayname"]
+	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if get_type != "item":
+		var get_collected_displaynames = []
+		for i in collected_upgrades:
+			get_collected_displaynames.append(UpgradeDb.UPGRADES[i]["displayname"])
+		if not get_upgraded_displaynames in get_collected_displaynames:
+			var new_item = itemContainer.instantiate()
+			new_item.upgrade = upgrade
+			match get_type:
+				"weapon":
+					collectedAbilities.add_child(new_item)
+				"upgrade":
+					collectedUpgrades.add_child(new_item)
 
 
 
