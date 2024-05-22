@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuydfiltrmaiy"]
+
+[ext_resource type="Texture2D" uid="uid://b3agoyqp8epy5" path="res://Art/MapArt/Stone_01.png" id="1_62sjx"]
+
+[node name="Rock" type="StaticBody2D"]
+position = Vector2(1788, 0)
+collision_layer = 17
+collision_mask = 17
+
+[node name="rockTexture" type="Sprite2D" parent="."]
+texture = ExtResource("1_62sjx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(267, -145, 350, -52.6, 430, 89.4, 430, 150, 470, 250.3, 460, 309, 399, 394, 242, 398, 210, 360, 51, 360, 47, 400, -387, 419, -448, 359, -425, 248, -356, 45, -248, -5, -105, 1, -102, -69, -66, -139, -20, -153, 8, -184, 142, -154)

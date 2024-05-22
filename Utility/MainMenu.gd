@@ -6,3 +6,7 @@ func _on_play_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_ready():
+	get_tree().paused = false 

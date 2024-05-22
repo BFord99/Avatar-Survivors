@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var movement_speed = 300
-var hp = 80
-var maxhp = 80
+var hp = 100
+var maxhp = 100
 var last_movement = Vector2.UP
 var time = 0
 var pass_time = 0
@@ -59,11 +59,16 @@ var enemy_close = []
 @onready var collectedAbilities = get_node("%CollectedAbilities")
 @onready var collectedUpgrades = get_node("%CollectedUpgrades")
 @onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
+@onready var deathPanel = get_node("%PlayerDeath")
+@onready var sndPlayerDeath = get_node("%snd_playerdeath")
+@onready var lblDeathTimer = get_node("%lbl_deathTimer")
+@onready var lblDeathLevel = get_node("%lbl_deathLevel")
 
 func _ready():
 	attack()
 	set_expbar(experience, calculate_experiencecap())
-	_on_hurt_box_hurt(0,0,0,0,0)
+	healthBar.max_value = maxhp
+	healthBar.value = hp
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
@@ -97,11 +102,11 @@ func attack():
 		if waterTornadoTimer.is_stopped():
 			waterTornadoTimer.start()
 
-func _on_hurt_box_hurt(damage, _angle, _knockback, crit_chance,element):
+func _on_hurt_box_hurt(damage, _angle, _knockback, crit_chance, element):
 	hp -= clamp(damage-armor, 1.0, 999.0)
-	healthBar.max_value = maxhp
 	healthBar.value = hp
-
+	if hp <= 0:
+		on_death()
 
 func _on_rock_shard_timer_timeout():
 	rockshard_ammo += rockshard_baseammo + additional_attacks
@@ -252,7 +257,7 @@ func upgrade_character(upgrade):
 		"food":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
-			_on_hurt_box_hurt(0,0,0,0,0)
+			healthBar.value = hp
 	
 	adjust_gui_collection(upgrade)
 	attack()
@@ -317,6 +322,19 @@ func adjust_gui_collection(upgrade):
 					collectedAbilities.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)
+					
+func on_death():
+	sndPlayerDeath.play()
+	lblLevel.visible = false
+	lblTimer.visible = false
+	lblDeathLevel.text = str(experience_level)
+	lblDeathTimer.text = str(lblTimer.text)
+	# Moving PlayerDeath UI onto screen
+	var tween = deathPanel.create_tween()
+	tween.tween_property(deathPanel,"position",Vector2(620,206),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.play()
+	deathPanel.visible = true
+	get_tree().paused = true
 
 
 

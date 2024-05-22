@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pcwvh0flo2qx"]
+[gd_scene load_steps=14 format=3 uid="uid://pcwvh0flo2qx"]
 
 [ext_resource type="Texture2D" uid="uid://hbhykqfftsyi" path="res://Art/MapArt/Sand_Tile_01.png" id="1_7w14v"]
 [ext_resource type="PackedScene" uid="uid://dcteqkc6x3hje" path="res://Player/player.tscn" id="2_yddm1"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_05eqa"]
 [ext_resource type="AudioStream" uid="uid://c7c8uyjon46ro" path="res://Audio/Music/agniKai.mp3" id="6_p0kur"]
 [ext_resource type="Texture2D" uid="uid://qqi6vdd07pt" path="res://Art/MapArt/DeadTree_02.png" id="7_kfmh0"]
-[ext_resource type="PackedScene" uid="uid://cxqvfdostm76j" path="res://Objects/ExperienceGem.tscn" id="8_4cujn"]
+[ext_resource type="PackedScene" uid="uid://cxqvfdostm76j" path="res://Objects/LootConsumables/ExperienceGem.tscn" id="8_4cujn"]
+[ext_resource type="Texture2D" uid="uid://b3agoyqp8epy5" path="res://Art/MapArt/Stone_01.png" id="9_3imfb"]
 
 [sub_resource type="Resource" id="Resource_ibtqf"]
 script = ExtResource("5_05eqa")
@@ -33,6 +34,9 @@ enemy = ExtResource("4_cdbti")
 enemy_num = 12
 enemy_spawn_delay = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw10f"]
+size = Vector2(10, 10000)
+
 [node name="TestWorld" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -57,48 +61,163 @@ stream = ExtResource("6_p0kur")
 volume_db = -40.0
 autoplay = true
 
-[node name="DeadTree02" type="Sprite2D" parent="."]
-position = Vector2(-1128, -372)
+[node name="ExperienceGem" parent="." instance=ExtResource("8_4cujn")]
+position = Vector2(-432, 8)
+experience = 50
+
+[node name="WorldCollisions" type="StaticBody2D" parent="."]
+constant_linear_velocity = Vector2(20, 600)
+
+[node name="South" type="CollisionShape2D" parent="WorldCollisions"]
+position = Vector2(0, 5000)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_xw10f")
+
+[node name="North" type="CollisionShape2D" parent="WorldCollisions"]
+position = Vector2(0, -5000)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_xw10f")
+
+[node name="West" type="CollisionShape2D" parent="WorldCollisions"]
+position = Vector2(-5000, 0)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_xw10f")
+
+[node name="East" type="CollisionShape2D" parent="WorldCollisions"]
+position = Vector2(5000, 0)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_xw10f")
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DeadTree11" type="Sprite2D" parent="Environment"]
+position = Vector2(-2751, -500)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree06" type="Sprite2D" parent="."]
-position = Vector2(2072, 893)
+[node name="DeadTree17" type="Sprite2D" parent="Environment"]
+position = Vector2(-3531, 4028)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree05" type="Sprite2D" parent="."]
-position = Vector2(-91, -1559)
+[node name="DeadTree18" type="Sprite2D" parent="Environment"]
+position = Vector2(-3931, 2258)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree03" type="Sprite2D" parent="."]
-position = Vector2(659, -443)
+[node name="DeadTree19" type="Sprite2D" parent="Environment"]
+position = Vector2(-1515, 4199)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree21" type="Sprite2D" parent="Environment"]
+position = Vector2(663, 4199)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree20" type="Sprite2D" parent="Environment"]
+position = Vector2(3873, -1038)
+scale = Vector2(1.10547, 1.10547)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree13" type="Sprite2D" parent="Environment"]
+position = Vector2(-3605, -2614)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree14" type="Sprite2D" parent="Environment"]
+position = Vector2(3230, -3191)
+scale = Vector2(1.48359, 1.48359)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree16" type="Sprite2D" parent="Environment"]
+position = Vector2(-1546, -3476)
+scale = Vector2(1.48359, 1.48359)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree22" type="Sprite2D" parent="Environment"]
+position = Vector2(568, -4800)
+scale = Vector2(1.48359, 1.48359)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree15" type="Sprite2D" parent="Environment"]
+position = Vector2(2278.88, 3030.87)
+scale = Vector2(2.04824, 2.04824)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree23" type="Sprite2D" parent="Environment"]
+position = Vector2(-7161, -2116)
+scale = Vector2(2.04824, 2.04824)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree24" type="Sprite2D" parent="Environment"]
+position = Vector2(2792, -6387)
+scale = Vector2(2.04824, 2.04824)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree25" type="Sprite2D" parent="Environment"]
+position = Vector2(6530, 2327)
+scale = Vector2(2.04824, 2.04824)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree26" type="Sprite2D" parent="Environment"]
+position = Vector2(-6669, 1387)
+scale = Vector2(2.04824, 2.04824)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree27" type="Sprite2D" parent="Environment"]
+position = Vector2(-1522, 6662)
+scale = Vector2(2.04824, 2.04824)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree06" type="Sprite2D" parent="Environment"]
+position = Vector2(3140, 1498)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree05" type="Sprite2D" parent="Environment"]
+position = Vector2(310, -2552)
+texture = ExtResource("7_kfmh0")
+
+[node name="DeadTree03" type="Sprite2D" parent="Environment"]
+position = Vector2(1143, -342)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree08" type="Sprite2D" parent="."]
+[node name="DeadTree08" type="Sprite2D" parent="Environment"]
 position = Vector2(635, 1517)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree07" type="Sprite2D" parent="."]
-position = Vector2(1756, -1096)
+[node name="DeadTree07" type="Sprite2D" parent="Environment"]
+position = Vector2(1867, -1751)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree04" type="Sprite2D" parent="."]
+[node name="DeadTree04" type="Sprite2D" parent="Environment"]
 position = Vector2(-704, 654)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree10" type="Sprite2D" parent="."]
-position = Vector2(-2017, 1175)
+[node name="DeadTree10" type="Sprite2D" parent="Environment"]
+position = Vector2(-2521, 1215)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
 
-[node name="DeadTree09" type="Sprite2D" parent="."]
+[node name="DeadTree09" type="Sprite2D" parent="Environment"]
 position = Vector2(-1345, -1354)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_kfmh0")
 
-[node name="ExperienceGem" parent="." instance=ExtResource("8_4cujn")]
-position = Vector2(-432, 8)
-experience = 50
+[node name="DeadTree12" type="Sprite2D" parent="Environment"]
+position = Vector2(-1131, 2352)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_kfmh0")
+
+[node name="Stone01" type="Sprite2D" parent="."]
+position = Vector2(-6211, 3185)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("9_3imfb")
+
+[node name="Stone02" type="Sprite2D" parent="."]
+position = Vector2(6271, -3912)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("9_3imfb")
+
+[node name="Stone03" type="Sprite2D" parent="."]
+position = Vector2(-4251, -6024)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("9_3imfb")

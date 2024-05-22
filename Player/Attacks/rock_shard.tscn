@@ -9,8 +9,8 @@ size = Vector2(20.6667, 9.66667)
 
 [node name="RockShard" type="Area2D" groups=["attack"]]
 top_level = true
-collision_layer = 4
-collision_mask = 4
+collision_layer = 20
+collision_mask = 20
 script = ExtResource("1_t7e4v")
 
 [node name="Timer" type="Timer" parent="."]

@@ -20,7 +20,7 @@ var knockback = Vector2.ZERO
 @onready var damage_numbers_point = $DamageNumbersPoint
 @onready var critdeath = $sfx_crit_death
 
-var exp_gem = preload("res://Objects/ExperienceGem.tscn")
+var exp_gem = preload("res://Objects/LootConsumables/ExperienceGem.tscn")
 var dying: bool = false
 
 signal remove_from_array(object)

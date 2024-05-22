@@ -1,10 +1,93 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw3yats6i4wb2"]
+[gd_scene load_steps=12 format=3 uid="uid://dw3yats6i4wb2"]
 
 [ext_resource type="Script" path="res://Utility/MainMenu.gd" id="1_udman"]
 [ext_resource type="Texture2D" uid="uid://d077tqpb21gyg" path="res://Art/Wallpaper/MenuWallpaper.webp" id="2_apiia"]
 [ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Art/Fonts/Avatar Airbender.ttf" id="3_6p4kh"]
 [ext_resource type="FontFile" uid="uid://cy3sky0dijm4v" path="res://Art/Fonts/Herculanum Regular.ttf" id="3_qgauk"]
+[ext_resource type="Theme" uid="uid://dmp01cqh2mnf8" path="res://Art/Fonts/Themes/playButtonTheme.tres" id="5_jalg8"]
 [ext_resource type="AudioStream" uid="uid://cwpypryef0fd6" path="res://Audio/Music/The Avatar's Love [Full HQ].mp3" id="5_s8e3p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u15bl"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.784314, 0.27451, 0.392157, 1)
+border_width_top = 8
+border_width_right = 14
+border_width_bottom = 8
+border_color = Color(0.988235, 0.627451, 0.572549, 0.772549)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 4
+corner_detail = 20
+shadow_color = Color(1, 0.478431, 0.341176, 0.6)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gobvj"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.784314, 0.27451, 0.392157, 1)
+border_width_top = 8
+border_width_right = 14
+border_width_bottom = 8
+border_color = Color(0.988235, 0.627451, 0.572549, 0.772549)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 4
+corner_detail = 20
+shadow_color = Color(1, 0.478431, 0.341176, 0.6)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw6wn"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.784314, 0.27451, 0.392157, 1)
+border_width_top = 8
+border_width_right = 14
+border_width_bottom = 8
+border_color = Color(0.988235, 0.627451, 0.572549, 0.772549)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 4
+corner_detail = 20
+shadow_color = Color(1, 0.478431, 0.341176, 0.6)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fwuo"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.784314, 0.27451, 0.392157, 1)
+border_width_top = 8
+border_width_right = 14
+border_width_bottom = 8
+border_color = Color(0.988235, 0.627451, 0.572549, 0.772549)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 4
+corner_detail = 20
+shadow_color = Color(1, 0.478431, 0.341176, 0.6)
+shadow_size = 14
+
+[sub_resource type="Theme" id="Theme_c4n8s"]
+Button/styles/focus = SubResource("StyleBoxFlat_u15bl")
+Button/styles/hover = SubResource("StyleBoxFlat_gobvj")
+Button/styles/normal = SubResource("StyleBoxFlat_dw6wn")
+Button/styles/pressed = SubResource("StyleBoxFlat_3fwuo")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,12 +100,18 @@ script = ExtResource("1_udman")
 
 [node name="Wallpaper_Texture" type="TextureRect" parent="."]
 layout_mode = 2
-offset_left = 1.0
-offset_right = 1921.0
-offset_bottom = 1088.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_apiia")
+expand_mode = 1
+
+[node name="AvatarsLove_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_s8e3p")
+volume_db = -20.0
+autoplay = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -54,7 +143,7 @@ vertical_alignment = 1
 [node name="Button_VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 480
+theme_override_constants/separation = 475
 alignment = 1
 
 [node name="Control" type="Control" parent="MarginContainer/Button_VBoxContainer"]
@@ -63,22 +152,19 @@ layout_mode = 2
 [node name="Play" type="Button" parent="MarginContainer/Button_VBoxContainer"]
 custom_minimum_size = Vector2(240, 80)
 layout_mode = 2
+theme = ExtResource("5_jalg8")
 theme_override_fonts/font = ExtResource("3_qgauk")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 text = "Play"
 
 [node name="Exit" type="Button" parent="MarginContainer/Button_VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = SubResource("Theme_c4n8s")
 theme_override_fonts/font = ExtResource("3_qgauk")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 45
 text = "Exit"
 
-[node name="AvatarsLove_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("5_s8e3p")
-volume_db = -20.0
-autoplay = true
-
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="MarginContainer/Button_VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Button_VBoxContainer/Exit" to="." method="_on_exit_pressed"]
