@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmdyo4y1stovf"
-path="res://.godot/imported/exp_progress.png-980bbfe77cce46f8f8fc3282ff21964a.ctex"
+uid="uid://b8mnrombi1roo"
+path="res://.godot/imported/exp_background.png-b03c8f72583eb769c4003767ed96042c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/exp_progress.png"
-dest_files=["res://.godot/imported/exp_progress.png-980bbfe77cce46f8f8fc3282ff21964a.ctex"]
+source_file="res://Art/UIArt/exp_background.png"
+dest_files=["res://.godot/imported/exp_background.png-b03c8f72583eb769c4003767ed96042c.ctex"]
 
 [params]
 

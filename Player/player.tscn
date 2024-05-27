@@ -3,8 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ckmvf2yg5dgbd" path="res://Art/Sprites/aangfix.png" id="1_3phce"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_687op"]
 [ext_resource type="PackedScene" uid="uid://cjd10gcwv0yay" path="res://Utility/hurt_box.tscn" id="3_m36la"]
-[ext_resource type="Texture2D" uid="uid://b8mnrombi1roo" path="res://Art/Sprites/exp_background.png" id="4_8xp5w"]
-[ext_resource type="Texture2D" uid="uid://bmdyo4y1stovf" path="res://Art/Sprites/exp_progress.png" id="5_8aga6"]
+[ext_resource type="Texture2D" uid="uid://b8mnrombi1roo" path="res://Art/UIArt/exp_background.png" id="4_dh28r"]
 [ext_resource type="FontFile" uid="uid://cq0d432fxx0tl" path="res://Art/Fonts/Avatar Airbender.ttf" id="6_u47mo"]
 [ext_resource type="Texture2D" uid="uid://cw4id3fvpnp8d" path="res://Art/UIArt/altScroll.png" id="7_4v0sy"]
 [ext_resource type="AudioStream" uid="uid://cyc8cromje4ce" path="res://Audio/SFX/lvlUp.wav" id="7_tex1y"]
@@ -30,10 +29,15 @@ radius = 292.043
 [sub_resource type="CircleShape2D" id="CircleShape2D_hicsh"]
 radius = 30.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jol7i"]
+bg_color = Color(0.972549, 0, 0.956863, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnlmx"]
-bg_color = Color(0.913725, 0.101961, 0.509804, 1)
+bg_color = Color(0, 0.784314, 0.309804, 1)
 
 [sub_resource type="Theme" id="Theme_68lx6"]
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_jol7i")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_cnlmx")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43p8t"]
@@ -187,8 +191,8 @@ offset_top = 1034.58
 offset_right = 1920.0
 offset_bottom = 1126.58
 theme = SubResource("Theme_68lx6")
-texture_under = ExtResource("4_8xp5w")
-texture_progress = ExtResource("5_8aga6")
+value = 50.0
+texture_under = ExtResource("4_dh28r")
 
 [node name="lbl_levelCount" type="Label" parent="GUILayer/GUI/ExperienceBar"]
 unique_name_in_owner = true
